@@ -1,90 +1,102 @@
 import { Request, Response } from "express";
-import {clearProfileById, getProfileById, getAllProfiles, updateProfileById} from "../services/profile.service";
+import {
+    getProfileById,
+    getAllProfiles,
+    updateProfileById,
+    deleteProfileById
+} from "../services/profile.service";
+import userProfile from "../models/userProfile";
 
-
-export const getProfileController = async (req: Request, res: Response) => {
+export const getProfileController = async (req: Request, res: Response): Promise<void> => {
     try {
         const userId = parseInt(req.params.id, 10);
 
         if (isNaN(userId)) {
-            return res.status(400).json({ error: 'ID invalide' });
+            res.status(400).json({ error: 'ID invalide' });
+            return;
         }
 
         const profile = await getProfileById(userId);
 
         if (!profile) {
-            return res.status(404).json({ error: 'Profile not found' });
+            res.status(404).json({ error: 'Profile not found' });
+            return;
         }
 
-        return res.status(200).json(profile);
-    }
-    catch (error) {
+        res.status(200).json(profile.toJson());
+    } catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }
-}
+};
 
-export const updateProfileController = async (req: Request, res: Response) => {
+
+export const updateProfileController = async (req: Request, res: Response) : Promise<void> => {
     try {
         const userId = parseInt(req.params.id, 10);
 
         if (isNaN(userId)) {
-            return res.status(400).json({ error: 'ID invalide' });
+            res.status(400).json({ error: 'ID invalide' });
+            return;
         }
 
-        const profile = await getProfileById(userId);
+        const existingProfile = await getProfileById(userId);
 
-        if (!profile) {
-            return res.status(404).json({ error: 'Profile not found' });
+        if (!existingProfile) {
+            res.status(404).json({ error: 'Profile not found' });
+            return;
         }
 
-        const updateData: ProfileUpdateInput = {
-            photoUrl: req.body.userUrlPp,
-            lastName: req.body.userLastName,
-            firstName: req.body.userFirstName,
-            bio: req.body.userBio,
-            birthDate: req.body.userBirth,
-            tel: req.body.userTel,
-            address: req.body.userAddress,
-            email: req.body.userEmail,
-        };
+        const profile = new userProfile(
+            existingProfile.getId(),
+            req.body.lastName,
+            req.body.firstName,
+            new Date(req.body.birthDate),
+            req.body.tel,
+            req.body.address,
+            req.body.photoUrl,
+            req.body.bio
+        );
 
-        const profileUpdated = await updateProfileById(userId, updateData);
+        const updatedProfile = await updateProfileById(userId, profile);
 
-        return res.status(200).json(profileUpdated);
+        res.status(200).json(updatedProfile.toJson());
     }
     catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
 
-export const deleteProfileController = async (req: Request, res: Response) => {
+export const deleteProfileController = async (req: Request, res: Response) : Promise<void> => {
     try {
         const userId = parseInt(req.params.id, 10);
 
         if (isNaN(userId)) {
-            return res.status(400).json({ error: 'ID invalide' });
+            res.status(400).json({ error: 'ID invalide' });
+            return;
         }
 
-        const profile = await clearProfileById(userId);
+        const isDeleted = await deleteProfileById(userId);
 
-        if (!profile) {
-            return res.status(404).json({ error: 'Profile not found' });
+        if (!isDeleted) {
+            res.status(404).json({ error: 'Profile not found' });
+            return;
         }
 
-        return res.status(200).json(profile);
+        res.status(200).json({ message: "Profile deleted successfully" });
     }
     catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
 
-export const getAllProfilesController  = async (req: Request, res: Response) => {
+export const getAllProfilesController  = async (req: Request, res: Response): Promise<void> =>  {
     try {
         const profiles = await getAllProfiles();
         if (profiles.length === 0) {
-            return res.status(204).send();
+            res.status(204).send();
+            return;
         }
-        return res.status(200).json(profiles);
+        res.status(200).json(profiles);
     }
     catch (error) {
         res.status(500).json({ message: "Internal server error" });
