@@ -2,9 +2,9 @@
   "name": "profilemanagement",
   "version": "1.0.0",
   "description": "Profile Management For LocaTech",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
+    "dev" : "ts-node src/index.ts",
     "test": "jest --coverage --coverageReporters=lcov"
   },
   "repository": {
