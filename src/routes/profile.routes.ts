@@ -1,11 +1,17 @@
 import { Router } from "express";
-import {getProfile, updateProfile, deleteProfile, getAllProfiles} from "../controllers/profile.controller";
+import {
+    getProfileController,
+    updateProfileController,
+    deleteProfileController,
+    getAllProfilesController,
+} from "../controllers/profile.controller";
+import {validateProfileInput} from "../middlewares/validateProfile";
 
 const router = Router();
 
-router.get('/:id', getProfile);
-router.put('/:id', updateProfile);
-router.delete('/:id', deleteProfile);
-router.get('/', getAllProfiles);
+router.get('/:id', getProfileController);
+router.put('/:id', validateProfileInput, updateProfileController);
+router.delete('/:id', deleteProfileController);
+router.get('/', getAllProfilesController);
 
 export default router;
