@@ -7,13 +7,13 @@ This service manages **user profiles** (owners / tenants): reading, updating, an
 
 ## 🚀 Features
 
-* 🔍 Retrieve a profile by ID
-* 🧾 List all profiles
-* 📝 Update a profile
-* 🗑️ Delete a profile
-* 📚 Integrated Swagger documentation (`/api-docs`)
-* ✅ Unit & integration tests (Jest + Supertest)
-* 🎯 Code quality via ESLint, Prettier & SonarCloud
+- 🔍 Retrieve a profile by ID
+- 🧾 List all profiles
+- 📝 Update a profile
+- 🗑️ Delete a profile
+- 📚 Integrated Swagger documentation (`/api-docs`)
+- ✅ Unit & integration tests (Jest + Supertest)
+- 🎯 Code quality via ESLint, Prettier & SonarCloud
 
 ---
 
