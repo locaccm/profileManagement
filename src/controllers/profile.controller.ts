@@ -28,7 +28,7 @@ export const getProfileController = async (
 
     res.status(200).json(profile.toJson());
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" + error });
   }
 };
 
@@ -66,7 +66,7 @@ export const updateProfileController = async (
 
     res.status(200).json(updatedProfile.toJson());
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" + error });
   }
 };
 
@@ -91,7 +91,7 @@ export const deleteProfileController = async (
 
     res.status(200).json({ message: "Profile deleted successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" + error });
   }
 };
 
@@ -107,6 +107,6 @@ export const getAllProfilesController = async (
     }
     res.status(200).json(profiles);
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" + error });
   }
 };
