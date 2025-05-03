@@ -4,8 +4,10 @@
   "description": "Profile Management For LocaTech",
   "main": "index.js",
   "scripts": {
-    "dev" : "ts-node src/index.ts",
-    "test": "jest --coverage --coverageReporters=lcov"
+    "dev": "ts-node src/index.ts",
+    "test": "jest --coverage --coverageReporters=lcov",
+    "test:dev": "npm run prettier && npm run migrate:dev && jest --runInBand --coverage --coverageReporters=lcov",
+    "prettier": "npx prettier . --write"
   },
   "repository": {
     "type": "git",

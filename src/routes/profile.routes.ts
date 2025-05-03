@@ -1,14 +1,13 @@
 import { Router } from "express";
 import {
-    getProfileController,
-    updateProfileController,
-    deleteProfileController,
-    getAllProfilesController,
+  getProfileController,
+  updateProfileController,
+  deleteProfileController,
+  getAllProfilesController,
 } from "../controllers/profile.controller";
-import {validateProfileInput} from "../middlewares/validateProfile";
+import { validateProfileInput } from "../middlewares/validateProfile";
 
 const router = Router();
-
 
 /**
  * @swagger
@@ -31,7 +30,7 @@ const router = Router();
  *       404:
  *         description: Profil non trouvé
  */
-router.get('/:id', getProfileController);
+router.get("/:id", getProfileController);
 
 /**
  * @swagger
@@ -88,7 +87,7 @@ router.get('/:id', getProfileController);
  *       404:
  *         description: Profil non trouvé
  */
-router.put('/:id', validateProfileInput, updateProfileController);
+router.put("/:id", validateProfileInput, updateProfileController);
 
 /**
  * @swagger
@@ -111,7 +110,7 @@ router.put('/:id', validateProfileInput, updateProfileController);
  *       404:
  *         description: Profil non trouvé
  */
-router.delete('/:id', deleteProfileController);
+router.delete("/:id", deleteProfileController);
 
 /**
  * @swagger
@@ -125,6 +124,6 @@ router.delete('/:id', deleteProfileController);
  *       204:
  *         description: Aucun profil trouvé
  */
-router.get('/', getAllProfilesController);
+router.get("/", getAllProfilesController);
 
 export default router;
