@@ -78,6 +78,7 @@ export const deleteProfileById = async (id: number): Promise<boolean> => {
     });
     return true;
   } catch (error) {
-    return false;
+    console.error("Error deleting profile:", error);
+    throw new Error("Failed to delete profile");
   }
 };
