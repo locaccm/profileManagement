@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient , Prisma } from "@prisma/client";
 import UserProfile from "../models/userProfile";
 
 const prisma = new PrismaClient();
@@ -78,7 +78,12 @@ export const deleteProfileById = async (id: number): Promise<boolean> => {
     });
     return true;
   } catch (error) {
-    console.error("Error deleting profile:", error);
-    throw new Error("Failed to delete profile");
+    if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === "P2025"
+    ) {
+      return false;
+    }
+    throw error;
   }
 };
