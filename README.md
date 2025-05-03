@@ -1,29 +1,29 @@
-# 📦 Profile Management Microservice - LocaTech
+# 📦 Profile Management Microservice – LocaTech
 
-Microservice développé dans le cadre du projet de Master LocaTech.  
-Ce service gère les **profils utilisateurs** (propriétaires / locataires) : lecture, modification et suppression.
-
----
-
-## 🚀 Fonctionnalités
-
-- 🔍 Récupérer un profil par ID
-- 🧾 Lister tous les profils
-- 📝 Modifier un profil
-- 🗑️ Supprimer un profil
-- 📚 Documentation Swagger intégrée (`/api-docs`)
-- ✅ Tests unitaires & d'intégration (Jest + Supertest)
-- 🎯 Qualité de code via ESLint, Prettier & SonarCloud
+Microservice developed as part of the LocaTech Master’s project.
+This service manages **user profiles** (owners / tenants): reading, updating, and deleting.
 
 ---
 
-## 📚 Swagger (Documentation API)
+## 🚀 Features
 
-Accessible ici après lancement du serveur :  
+* 🔍 Retrieve a profile by ID
+* 🧾 List all profiles
+* 📝 Update a profile
+* 🗑️ Delete a profile
+* 📚 Integrated Swagger documentation (`/api-docs`)
+* ✅ Unit & integration tests (Jest + Supertest)
+* 🎯 Code quality via ESLint, Prettier & SonarCloud
+
+---
+
+## 📚 Swagger (API Documentation)
+
+Available here after starting the server:
 👉 [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
 ---
 
-## 👤 Auteur
+## 👤 Author
 
-Maxime Cauwet – Projet de Master CCM LocaTech
+Maxime Cauwet – LocaTech CCM Master's Project
