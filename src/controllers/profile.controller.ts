@@ -5,7 +5,7 @@ import {
   updateProfileById,
   deleteProfileById,
 } from "../services/profile.service";
-import userProfile from "../models/userProfile";
+import UserProfile from "../models/userProfile";
 
 export const getProfileController = async (
   req: Request,
@@ -51,7 +51,7 @@ export const updateProfileController = async (
       return;
     }
 
-    const profile = new userProfile(
+    const profile = new UserProfile(
       existingProfile.getId(),
       req.body.lastName,
       req.body.firstName,

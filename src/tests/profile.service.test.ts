@@ -5,7 +5,7 @@ import {
   deleteProfileById,
 } from "../services/profile.service";
 
-import userProfile from "../models/userProfile";
+import UserProfile from "../models/userProfile";
 
 describe("Profile Service", () => {
   // GET BY ID

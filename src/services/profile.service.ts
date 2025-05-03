@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import userProfile from "../models/userProfile";
+import UserProfile from "../models/userProfile";
 
 const prisma = new PrismaClient();
 
 export const getProfileById = async (
   id: number,
-): Promise<userProfile | null> => {
+): Promise<UserProfile | null> => {
   const userDb = await prisma.user.findUnique({
     where: { USEN_ID: id },
     select: {
@@ -24,7 +24,7 @@ export const getProfileById = async (
     return null;
   }
 
-  return userProfile.fromDb(userDb);
+  return UserProfile.fromDb(userDb);
 };
 
 export const getAllProfiles = async () => {
@@ -41,8 +41,8 @@ export const getAllProfiles = async () => {
 
 export const updateProfileById = async (
   id: number,
-  profile: userProfile,
-): Promise<userProfile> => {
+  profile: UserProfile,
+): Promise<UserProfile> => {
   const updated = await prisma.user.update({
     where: { USEN_ID: id },
     data: {
@@ -66,7 +66,7 @@ export const updateProfileById = async (
     },
   });
 
-  return userProfile.fromDb(updated);
+  return UserProfile.fromDb(updated);
 };
 
 export const deleteProfileById = async (id: number): Promise<boolean> => {

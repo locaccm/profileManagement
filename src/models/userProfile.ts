@@ -1,6 +1,6 @@
 import { User as UserDb } from "@prisma/client";
 
-class userProfile {
+class UserProfile {
   constructor(
     private USEN_ID: number,
     private USEC_LNAME?: string,
@@ -12,8 +12,8 @@ class userProfile {
     private USEC_BIO?: string,
   ) {}
 
-  public static fromDb(userDb: Partial<UserDb>): userProfile {
-    return new userProfile(
+  public static fromDb(userDb: Partial<UserDb>): UserProfile {
+    return new UserProfile(
       userDb.USEN_ID!,
       userDb.USEC_LNAME ?? undefined,
       userDb.USEC_FNAME ?? undefined,
@@ -109,4 +109,4 @@ class userProfile {
   }
 }
 
-export default userProfile;
+export default UserProfile;

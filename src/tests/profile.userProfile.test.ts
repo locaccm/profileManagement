@@ -1,8 +1,8 @@
-import userProfile from "../models/userProfile";
+import UserProfile from "../models/userProfile";
 
 describe("userProfile model", () => {
   it("should instantiate and return values via getters", () => {
-    const profile = new userProfile(
+    const profile = new UserProfile(
       1,
       "Doe",
       "John",
@@ -24,7 +24,7 @@ describe("userProfile model", () => {
   });
 
   it("should update fields using setters", () => {
-    const profile = new userProfile(1)
+    const profile = new UserProfile(1)
       .setFirstName("Jane")
       .setLastName("Smith")
       .setBirthDate(new Date("2000-01-01"))
@@ -43,7 +43,7 @@ describe("userProfile model", () => {
   });
 
   it("should convert to JSON format correctly", () => {
-    const profile = new userProfile(
+    const profile = new UserProfile(
       5,
       "Test",
       "User",
