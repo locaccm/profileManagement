@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import {
   getProfileById,
   getAllProfiles,
@@ -6,6 +7,27 @@ import {
 } from "../services/profile.service";
 
 import UserProfile from "../models/userProfile";
+const prisma = new PrismaClient();
+
+beforeAll(async () => {
+  await prisma.user.create({
+    data: {
+      USEN_ID: 1,
+      USEC_FNAME: "Maxime",
+      USEC_LNAME: "Test",
+      USED_BIRTH: new Date("1990-01-01"),
+      USEC_TEL: "0600000000",
+      USEC_ADDRESS: "1 Rue de Paris",
+      USEC_URLPP: "https://example.com/photo.jpg",
+      USEC_BIO: "Test bio",
+    },
+  });
+});
+
+afterAll(async () => {
+  await prisma.user.deleteMany();
+  await prisma.$disconnect();
+});
 
 describe("Profile Service", () => {
   // GET BY ID
