@@ -12,10 +12,7 @@ setupSwagger(app);
 
 if (process.env.NODE_ENV !== "test") {
   const PORT = process.env.PORT ?? 3000;
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-    console.log(`📚 Swagger docs on http://localhost:${PORT}/api-docs`);
-  });
+  app.listen(PORT, () => {});
 }
 
 export default app;
