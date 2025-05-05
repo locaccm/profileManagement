@@ -1,8 +1,29 @@
-# profileManagement
-Profile Management For LocaTech
+# 📦 Profile Management Microservice – LocaTech
 
-Test file location :
+Microservice developed as part of the LocaTech Master’s project.
+This service manages **user profiles** (owners / tenants): reading, updating, and deleting.
 
-All test files must be located in src/tests/ and follow the .test.ts naming convention. Only these files will be included in test execution and coverage reports.
+---
 
-Don't forget to delete a.test.ts
+## 🚀 Features
+
+- 🔍 Retrieve a profile by ID
+- 🧾 List all profiles
+- 📝 Update a profile
+- 🗑️ Delete a profile
+- 📚 Integrated Swagger documentation (`/api-docs`)
+- ✅ Unit & integration tests (Jest + Supertest)
+- 🎯 Code quality via ESLint, Prettier & SonarCloud
+
+---
+
+## 📚 Swagger (API Documentation)
+
+Available here after starting the server:
+👉 [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
+---
+
+## 👤 Author
+
+Maxime Cauwet – LocaTech CCM Master's Project
