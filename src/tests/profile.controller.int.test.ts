@@ -4,7 +4,7 @@ import app from "../index";
 describe("Profile API Integration - GET", () => {
   describe("GET /profiles/:id", () => {
     it("should return 200 and a profile if ID exists", async () => {
-      const res = await request(app).get("/profiles/1");
+      const res = await request(app).get("/profiles/999");
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty("id");
       expect(res.body).toHaveProperty("firstName");
@@ -28,7 +28,7 @@ describe("Profile API Integration - PUT", () => {
   describe("PUT /profiles/:id", () => {
     it("should return 200 and update the profile", async () => {
       const res = await request(app)
-        .put("/profiles/1")
+        .put("/profiles/999")
         .send({
           firstName: "Jean",
           lastName: "Testé",
@@ -47,7 +47,7 @@ describe("Profile API Integration - PUT", () => {
 
     it("should return 400 for missing fields", async () => {
       const res = await request(app)
-        .put("/profiles/1")
+        .put("/profiles/999")
         .send({
           firstName: "",
           lastName: "",
@@ -83,7 +83,7 @@ describe("Profile API Integration - PUT", () => {
 describe("Profile API Integration - DELETE", () => {
   describe("DELETE /profiles/:id", () => {
     it("should return 200 if profile is deleted successfully", async () => {
-      const res = await request(app).delete("/profiles/1");
+      const res = await request(app).delete("/profiles/999");
       expect([200, 404]).toContain(res.status);
     });
 

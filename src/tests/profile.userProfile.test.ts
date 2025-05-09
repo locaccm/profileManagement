@@ -3,7 +3,7 @@ import UserProfile from "../models/userProfile";
 describe("userProfile model", () => {
   it("should instantiate and return values via getters", () => {
     const profile = new UserProfile(
-      1,
+      999,
       "Doe",
       "John",
       new Date("1990-01-01"),
@@ -13,7 +13,7 @@ describe("userProfile model", () => {
       "Bio text",
     );
 
-    expect(profile.getId()).toBe(1);
+    expect(profile.getId()).toBe(999);
     expect(profile.getLastName()).toBe("Doe");
     expect(profile.getFirstName()).toBe("John");
     expect(profile.getBirthDate()).toEqual(new Date("1990-01-01"));
@@ -24,7 +24,7 @@ describe("userProfile model", () => {
   });
 
   it("should update fields using setters", () => {
-    const profile = new UserProfile(1)
+    const profile = new UserProfile(999)
       .setFirstName("Jane")
       .setLastName("Smith")
       .setBirthDate(new Date("2000-01-01"))
