@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 beforeAll(async () => {
   await prisma.user.create({
     data: {
-      USEN_ID: 1,
+      USEN_ID: 999,
       USEC_FNAME: "Maxime",
       USEC_LNAME: "Test",
       USED_BIRTH: new Date("1990-01-01"),
@@ -25,7 +25,6 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await prisma.user.deleteMany();
   await prisma.$disconnect();
 });
 
