@@ -21,7 +21,6 @@ model User {
   USEC_PASSWORD    String?         @map("USEC_PASSWORD")
   USEN_INVITE      Int?            @map("USEN_INVITE")
   accommodations   Accommodation[]
-  events           Event[]
   leases           Lease[]
   messagesReceived Message[]       @relation("Receiver")
   messagesSent     Message[]       @relation("Sender")
@@ -40,21 +39,18 @@ model Accommodation {
   ACCB_AVAILABLE Boolean? @default(true) @map("ACCB_AVAILABLE")
   USEN_ID        Int?     @map("USEN_ID")
   owner          User?    @relation(fields: [USEN_ID], references: [USEN_ID], onDelete: Cascade, onUpdate: NoAction, map: "fk_accommodation_user")
-  events         Event[]
   leases         Lease[]
 
   @@map("ACCOMMODATION")
 }
 
 model Event {
-  EVEN_ID       Int            @id @default(autoincrement()) @map("EVEN_ID")
-  EVEC_LIB      String?        @map("EVEC_LIB") @db.VarChar(255)
-  EVED_START    DateTime?      @map("EVED_START") @db.Timestamp(6)
-  EVED_END      DateTime?      @map("EVED_END") @db.Timestamp(6)
-  USEN_ID       Int?           @map("USEN_ID")
-  ACCN_ID       Int?           @map("ACCN_ID")
-  accommodation Accommodation? @relation(fields: [ACCN_ID], references: [ACCN_ID], onDelete: Cascade, onUpdate: NoAction, map: "fk_event_accommodation")
-  user          User?          @relation(fields: [USEN_ID], references: [USEN_ID], onDelete: Cascade, onUpdate: NoAction, map: "fk_event_user")
+  EVEN_ID    Int      @id @default(autoincrement()) @map("EVEN_ID")
+  EVEC_LIB   String   @map("EVEC_LIB") @db.VarChar(255)
+  EVED_START DateTime @map("EVED_START") @db.Timestamp(6)
+  EVED_END   DateTime @map("EVED_END") @db.Timestamp(6)
+  USEN_ID    Int      @map("USEN_ID")
+  ACCN_ID    Int      @map("ACCN_ID")
 
   @@map("EVENT")
 }
