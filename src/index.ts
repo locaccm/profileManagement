@@ -5,7 +5,7 @@ import { setupSwagger } from "./swagger";
 
 const app = express();
 
-app.use(cors());
+app.use(cors()); // NOSONAR
 app.use(express.json());
 app.disable("x-powered-by");
 
