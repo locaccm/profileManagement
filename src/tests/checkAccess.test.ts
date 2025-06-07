@@ -48,7 +48,7 @@ describe("Middleware - checkAccess", () => {
       authorization: "Bearer valid-token",
     };
 
-    mockedAxios.post.mockResolvedValue({ status: 201 });
+    mockedAxios.post.mockResolvedValue({ status: 200 });
 
     const middleware = checkAccess("getProfile");
     await middleware(req as Request, res as Response, next);
